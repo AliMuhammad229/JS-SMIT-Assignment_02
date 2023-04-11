@@ -67,3 +67,45 @@ const myObject = {
     course: 'JS Crash Course - SMIT'
 };
 saveObjectLocalStorage("myObject", myObject);
+
+// Q: 07
+function retrievedObjectLocalStorage(key, Object) {
+    localStorage.setItem(key, JSON.stringify(Object));
+    const retrievedObject = localStorage.getItem(Object);
+    return JSON.parse(retrievedObject);
+}
+
+const myObject = {
+    name: 'Ali Muhammad',
+    age: 23,
+    email: 'aliqasim.am7@gmail.com',
+    course: 'JS Crash Course - SMIT'
+};
+console.log(retrievedObjectLocalStorage("myObject", myObject));
+
+
+// Q: 08
+function saveObjtoLS(Obj) {
+    for (const keys in Obj) {
+        if (Object.hasOwnProperty.call(Obj, keys)) {
+          localStorage.setItem(keys, Obj[keys]);
+        }
+    }
+
+    const newObject = {};
+    for (const keys in Obj) {
+      if (Object.hasOwnProperty.call(Obj, keys)) {
+        newObject[keys] = localStorage.getItem(keys);
+      }
+    }
+    return newObject;
+}
+
+const myObject = {
+    name: 'Ali Muhammad',
+    age: 23,
+    email: 'aliqasim.am7@gmail.com',
+    course: 'JS Crash Course - SMIT'
+};
+const retrievedObj = saveObjtoLS(myObject);
+console.log(retrievedObj);
